@@ -5,3 +5,4 @@ number_of_laps = distance // 100
 destination = (-(100 * number_of_laps - distance))
 print(destination)
 
+

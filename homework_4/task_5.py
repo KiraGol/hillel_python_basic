@@ -1,0 +1,12 @@
+my_list = list(range(1, 11, 1))
+print(my_list)
+
+print(my_list[2])
+print(my_list[8])
+print(my_list[:5])
+print(my_list[:-2])
+print(my_list[::2])
+print(my_list[1::2])
+print(my_list[::-1])
+print(my_list[::-1][::2])
+print(len(my_list))

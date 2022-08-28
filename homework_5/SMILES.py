@@ -1,0 +1,2 @@
+SMILE_1 = '\U0001F609'
+SMILE_null = ''

@@ -55,17 +55,24 @@ def validate_score_age_rewards(google_data: dict, score=90, min_age=9,
     return top_score
 
 
-def display_top_score_message(top_score: list):
+def display_top_score_message(top_score: list, db: bool):
     """
     add information in string about top student score
+    :param db: bool
     :param top_score: list
     :return: list
     """
     now = datetime.datetime.now().date()
     for item in top_score:
-        item['message'] = f"[Запит від {now}] Учень {item['name']} " \
-                          f"{SMILES.SMILE_1} є відмінником, його бал " \
-                          f"{item['score']}, відзначимо, що {item['notes']}"
+        if db is True:
+            item['notes'] = f"[Запит від {now}] Учень {item['name']} " \
+                          f"{SMILES.SMILE_null} є відмінником, його бал " \
+                          f"{item['score']}."
+        else:
+            item['message'] = f"[Запит від {now}] Учень {item['name']} " \
+                              f"{SMILES.SMILE_1} є відмінником, його бал " \
+                              f"{item['score']}, відзначимо, що " \
+                              f"{item['notes']}"
     return top_score
 
 
@@ -96,6 +103,5 @@ def append_message_in_file(file_name='top_score_file.txt', message_150=''):
         file.write(message_150)
 
 
-if __name__ == '__main__':
-    # pprint(display_top_score_message(
-    #     validate_score_age_rewards(take_google_data(task_1_url.URL))))
+# if __name__ == '__main__':
+#     pprint(display_top_score_message(validate_score_age_rewards(take_google_data(task_1_url.URL)), False))

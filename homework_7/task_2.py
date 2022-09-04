@@ -19,7 +19,12 @@ def get_data_from_json_file(name_of_json_file: str) -> dict:
         return data_from_json_file
 
 
-def get_duration_from_tracks(data_from_json_file: dict):
+def get_duration_from_tracks(data_from_json_file: dict) -> int:
+    """
+    returns the number of seconds of all tracks.
+    :param data_from_json_file: dict
+    :return: int
+    """
     for key, value in data_from_json_file.items():
         new_data = value
         tracks = new_data.get('tracks')
@@ -29,9 +34,12 @@ def get_duration_from_tracks(data_from_json_file: dict):
             return duration
 
 
-def conversion_to_time_format(duration: int):
+def conversion_to_time_format(duration: int) -> str:
+    """
+    converts the number of seconds to the time format "hours:minutes:seconds"
+    :param duration: int
+    :return: str
+    """
     time_format = time.strftime("%H:%M:%S", time.gmtime(duration))
     return time_format
 
-
-print(conversion_to_time_format(get_duration_from_tracks(get_data_from_json_file("acdc.json"))))

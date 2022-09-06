@@ -11,8 +11,6 @@ import time
 def get_data_from_json_file(name_of_json_file: str) -> dict:
     """
     get data from json file
-    :param name_of_json_file: str
-    :return: dict
     """
     with open(name_of_json_file, 'r', encoding='utf-8') as f:
         data_from_json_file = json.load(f)
@@ -22,8 +20,6 @@ def get_data_from_json_file(name_of_json_file: str) -> dict:
 def get_duration_from_tracks(data_from_json_file: dict) -> int:
     """
     returns the number of seconds of all tracks.
-    :param data_from_json_file: dict
-    :return: int
     """
     for key, value in data_from_json_file.items():
         album = value
@@ -37,8 +33,6 @@ def get_duration_from_tracks(data_from_json_file: dict) -> int:
 def conversion_to_time_format(duration: int) -> str:
     """
     converts the number of seconds to the time format "hours:minutes:seconds"
-    :param duration: int
-    :return: str
     """
     time_format = time.strftime("%H:%M:%S", time.gmtime(duration))
     return time_format

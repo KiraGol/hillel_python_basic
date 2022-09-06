@@ -12,9 +12,10 @@ def from_list_to_dict(income_list: list) -> dict:
     """
     converts the list to a dictionary, where key is the index of the list
     value and value is the value in the list.
-    :param income_list: list
-    :return: dict
     """
     new_dict = dict((index, value) for index, value in enumerate(income_list))
     return new_dict
 
+
+if __name__ == '__main__':
+    print(from_list_to_dict(input))

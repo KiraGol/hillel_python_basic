@@ -13,16 +13,15 @@ import time
 
 def timer(function_to_decorate):
     """
-
-    :param function_to_decorate:
-    :return:
+    counts seconds with counter output
     """
-    def inner(number_of_seconds_plus_one: int = 4):
+    def inner(*args, **kwargs):
+        countdown_start = 4
         for sec in range(3):
             time.sleep(1)
-            number_of_seconds_plus_one -= 1
-            print(number_of_seconds_plus_one)
-        return function_to_decorate()
+            countdown_start -= 1
+            print(countdown_start)
+        return function_to_decorate(*args, **kwargs)
 
     return inner()
 
@@ -31,10 +30,11 @@ def timer(function_to_decorate):
 def what_time_is_it_now():
     """
     displays the current time on the clock in the format %H:%M
-    :return:
+    :return: str
     """
     current_time = strftime('%H:%M')
     return current_time
 
 
-print(what_time_is_it_now)
+if __name__ == '__main__':
+    print(what_time_is_it_now)

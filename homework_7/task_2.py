@@ -26,11 +26,11 @@ def get_duration_from_tracks(data_from_json_file: dict) -> int:
     :return: int
     """
     for key, value in data_from_json_file.items():
-        new_data = value
-        tracks = new_data.get('tracks')
+        album = value
+        tracks = album.get('tracks')
         for k, v in tracks.items():
-            new_new_data = v
-            duration = sum(int(n['duration']) for n in new_new_data)
+            value_in_tracks = v
+            duration = sum(int(n['duration']) for n in value_in_tracks)
             return duration
 
 
@@ -43,3 +43,7 @@ def conversion_to_time_format(duration: int) -> str:
     time_format = time.strftime("%H:%M:%S", time.gmtime(duration))
     return time_format
 
+
+if __name__ == '__main__':
+    print(conversion_to_time_format(get_duration_from_tracks(
+        get_data_from_json_file("acdc.json"))))

@@ -15,15 +15,16 @@ def timer(function_to_decorate):
     """
     counts seconds with counter output
     """
-    def inner(*args, **kwargs):
+    def inner():
         countdown_start = 4
         for sec in range(3):
             time.sleep(1)
             countdown_start -= 1
             print(countdown_start)
-        return function_to_decorate(*args, **kwargs)
+        result = function_to_decorate()
+        return result
 
-    return inner()
+    return inner
 
 
 @timer
@@ -37,4 +38,4 @@ def what_time_is_it_now():
 
 
 if __name__ == '__main__':
-    print(what_time_is_it_now)
+    print(what_time_is_it_now())

@@ -1,8 +1,13 @@
 import datetime
+from pprint import pprint
+
 import requests
 
 
-def do_list_with_date():
+def do_list_with_date() -> list:
+    """
+    get list with dates that user entered
+    """
     date_today = datetime.datetime.now()
     start_date = input("Enter start date: ")
     start_date_obj = datetime.datetime.strptime(start_date, '%Y-%m-%d')
@@ -13,7 +18,10 @@ def do_list_with_date():
     return dates_list
 
 
-def get_data_from_list_of_dates(dates_list):
+def get_data_from_list_of_dates(dates_list) -> list:
+    """
+    get data with currency conversion results
+    """
     data = []
     URL = "https://api.exchangerate.host/convert"
     currency_from = input("Enter currency from: ")
@@ -27,10 +35,13 @@ def get_data_from_list_of_dates(dates_list):
     return data
 
 
-# def new_data(data):
+# def get_parameters_from_data(data):
+#     new = []
+#     for param in data:
+#         new = param['date'], param['info']['rate'], param['query']['amount'], param['query']['from'], param['query']['to'], param['result']
+#     return new
 
-
-
-print(get_data_from_list_of_dates(do_list_with_date()))
+# print(get_parameters_from_data(get_data_from_list_of_dates(do_list_with_date())))
+pprint(get_data_from_list_of_dates(do_list_with_date()))
 
 

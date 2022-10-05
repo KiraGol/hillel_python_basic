@@ -63,9 +63,6 @@ class City:
 
 
 if __name__ == '__main__':
-    odessa = City("Odessa")
-    odessa.streets = (1, 2, 4, 6)
-    odessa.houses = (1, 2, 5, 6)
-    odessa.population = (64, 64, 67, 89)
+    pass
 
 

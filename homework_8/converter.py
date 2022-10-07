@@ -35,13 +35,24 @@ def get_data_from_list_of_dates(dates_list) -> list:
     return data
 
 
-# def get_parameters_from_data(data):
-#     new = []
-#     for param in data:
-#         new = param['date'], param['info']['rate'], param['query']['amount'], param['query']['from'], param['query']['to'], param['result']
-#     return new
+def get_parameters_from_data(data):
+    """return parameters like date, rate, amount,
+    from currency, to currency and result"""
+    new = []
+    for param in data:
+        if param['success'] is True:
+            new.append(
+                (
+                    param['date'],
+                    param['info']['rate'],
+                    param['query']['amount'],
+                    param['query']['from'],
+                    param['query']['to'],
+                    param['result']
+                )
+            )
+    return f"'date', 'from', 'to', 'amount', 'rate', 'result': {new}"
 
-# print(get_parameters_from_data(get_data_from_list_of_dates(do_list_with_date())))
-pprint(get_data_from_list_of_dates(do_list_with_date()))
+print(get_parameters_from_data(get_data_from_list_of_dates(do_list_with_date())))
 
 

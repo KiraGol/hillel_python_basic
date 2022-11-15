@@ -29,5 +29,3 @@ def conversion_to_time_format(duration: int) -> str:
     """
     time_format = time.strftime("%H:%M:%S", time.gmtime(duration))
     return time_format
-
-print(conversion_to_time_format(get_duration_from_tracks(get_data_from_json_file("acdc.json"))))
